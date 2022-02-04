@@ -1,10 +1,10 @@
 import { FormEvent } from "react";
-import { json } from "stream/consumers";
 
-const apiUrl = process.env["REACT_APP_API_URL "];
+const apiUrl = process.env["REACT_APP_API_URL"];
 export const LoginScreen = () => {
   const login = (param: { username: string, password: string }) => {
-    fetch(`${apiUrl}/login}`, {
+    console.log(apiUrl);
+    fetch(`${apiUrl}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
