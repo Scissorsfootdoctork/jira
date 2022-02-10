@@ -1,11 +1,9 @@
 import { SearchPanel } from "./search-panel";
 import { List } from "./list";
 import { useEffect, useState } from "react";
-import qs from "qs";
 import { clearObject, useDebounce, useMount } from "../../utils";
 import { useHttp } from "../../utils/http";
-
-const apiUrl = process.env.REACT_APP_API_URL;
+import styled from "@emotion/styled";
 
 export const ProjectListScreen = () => {
   const [param, setParam] = useState({
@@ -23,8 +21,12 @@ export const ProjectListScreen = () => {
   useMount(() => {
     client("users", {}).then(res => setUsers(res));
   });
-  return <div>
+  return <Container>
+    <h1>项目列表</h1>
     <SearchPanel param={param} setParam={setParam} users={users} />
     <List list={list} users={users} />
-  </div>;
+  </Container>;
 };
+const Container = styled.div`
+  padding: 3.2rem;
+`;
